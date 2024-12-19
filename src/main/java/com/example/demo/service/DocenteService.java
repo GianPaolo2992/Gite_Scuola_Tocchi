@@ -23,10 +23,11 @@ public class DocenteService {
     private DocenteRepository docenteRepository;
     @Autowired
     private GitaRepository gitaRepository;
+
     @Transactional
-    public DocenteDTO getDocenteById(Integer id){
+    public DocenteDTO getDocenteById(Integer id) {
         Optional<Docente> docente = docenteRepository.findById(id);
-        if (docente.isPresent()){
+        if (docente.isPresent()) {
             return DocenteConverter.convertToDTO(docente.get());
         } else {
             throw new EntityNotFoundException("Entity Not Found");
@@ -35,15 +36,15 @@ public class DocenteService {
     }
 
     @Transactional
-    public List<DocenteDTO> getAllDocenti(){
-        List<Docente>  listaDocente = docenteRepository.findAll();
+    public List<DocenteDTO> getAllDocenti() {
+        List<Docente> listaDocente = docenteRepository.findAll();
         List<DocenteDTO> listaDocenteDTO = new ArrayList<>();
-            for (Docente doc : listaDocente){
-                DocenteDTO docenteDTO = DocenteConverter.convertToDTO(doc);
+        for (Docente doc : listaDocente) {
+            DocenteDTO docenteDTO = DocenteConverter.convertToDTO(doc);
 
-                listaDocenteDTO.add(docenteDTO);
-            }
-            return listaDocenteDTO;
+            listaDocenteDTO.add(docenteDTO);
+        }
+        return listaDocenteDTO;
     }
 
     @Transactional
@@ -56,23 +57,23 @@ public class DocenteService {
     }
 
     @Transactional
-    public DocenteDTO updateDocente(Integer id, DocenteDTO docenteDTO){
+    public DocenteDTO updateDocente(Integer id, DocenteDTO docenteDTO) {
         Optional<Docente> docenteOPT = docenteRepository.findById(id);
 
-        if (docenteOPT.isPresent()){
+        if (docenteOPT.isPresent()) {
             docenteDTO.setId(id);
             Docente docenteUpdated = DocenteConverter.convertToEntity(docenteDTO);
             return DocenteConverter.convertToDTO(docenteUpdated);
-        }else {
+        } else {
             throw new EntityNotFoundException("Entity not found");
         }
     }
 
     @Transactional
-    public DocenteDTO deleteDocente(Integer id){
+    public DocenteDTO deleteDocente(Integer id) {
         Optional<Docente> docenteOPT = docenteRepository.findById(id);
 
-        if (docenteOPT.isPresent()){
+        if (docenteOPT.isPresent()) {
             Docente docenteDeleted = docenteOPT.get();
 
             if (docenteDeleted.getGita() != null) {
@@ -80,15 +81,15 @@ public class DocenteService {
                 gita.setDocente(null);
                 gitaRepository.save(gita);
             }
-            if(docenteDeleted.getClasse() != null) {
+            if (docenteDeleted.getClasse() != null) {
 
                 throw new TransientObjectException("non è possibile eliminare un docente con una perche referenziato in classe");
 
             }
 
             docenteRepository.delete(docenteOPT.get());
-            return  DocenteConverter.convertToDTO(docenteDeleted);
-        }else {
+            return DocenteConverter.convertToDTO(docenteDeleted);
+        } else {
             throw new EntityNotFoundException("Docente Not Found");
         }
     }

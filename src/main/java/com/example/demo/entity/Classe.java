@@ -12,7 +12,7 @@ public class Classe {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-@JsonInclude(JsonInclude.Include.NON_NULL)
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String sezione;
 
 
@@ -52,11 +52,12 @@ public class Classe {
     public void setDocente(Docente docente) {
         this.docente = docente;
     }
+
     public List<Gita> getListaGite() {
         return listaGite;
     }
 
-    public void setListaGite(List<Gita> listaGite){
+    public void setListaGite(List<Gita> listaGite) {
         this.listaGite = listaGite;
     }
 }

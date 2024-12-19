@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.util.List;
+
 @Entity
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Gita {
@@ -21,10 +22,10 @@ public class Gita {
     @Column(name = "dataritorno")
     private LocalDate dataRitorno;
     @OneToOne
-    @JoinColumn(name = "id_docente" , unique = true)
+    @JoinColumn(name = "id_docente", unique = true)
     private Docente docente;
 
-    @ManyToMany (cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "destinazione",
             joinColumns = @JoinColumn(name = "id_gita"),//lista

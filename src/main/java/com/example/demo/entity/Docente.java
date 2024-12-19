@@ -27,8 +27,10 @@ public class Docente {
     )
     private Gita gita;
 
-    public Docente(){}
-    public Integer getId(){
+    public Docente() {
+    }
+
+    public Integer getId() {
 
         return id;
     }

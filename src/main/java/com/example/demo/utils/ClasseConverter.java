@@ -25,10 +25,10 @@ public class ClasseConverter {
         ClasseDTO classeDTO = new ClasseDTO();
         classeDTO.setId(classe.getId());
         classeDTO.setSezione(classe.getSezione());
-        if(classe.getDocente() != null){
+        if (classe.getDocente() != null) {
             classeDTO.setDocenteDTO(DocenteConverter.convertToDTOXClasse(classe.getDocente()));
         }
-        if(classe.getListaGite() != null){
+        if (classe.getListaGite() != null) {
             classeDTO.setListaGiteDTO(GitaConverter.convertListToDTOXClasse(classe.getListaGite()));//crea converter di lista gite in gita converter
 
         }
@@ -44,7 +44,7 @@ public class ClasseConverter {
         return classe;
     }
 
-    public static List<ClasseDTO> ConvertListToDTOXGita(List<Classe> listaClassi){
+    public static List<ClasseDTO> ConvertListToDTOXGita(List<Classe> listaClassi) {
         List<ClasseDTO> listaGiteDTO = new ArrayList<>();
 
         for (Classe classe : listaClassi) {

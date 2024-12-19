@@ -15,7 +15,7 @@ public class GitaController {
     private GitaService gitaService;
 
     @GetMapping("/getGitaById/{id}")
-    public GitaDTO getGitaById (@PathVariable("id") Integer id) {
+    public GitaDTO getGitaById(@PathVariable("id") Integer id) {
         return gitaService.getGitaById(id);
     }
 
@@ -30,8 +30,8 @@ public class GitaController {
     }
 
     @PutMapping("/updateGita/{id}")
-    public GitaDTO updateGita(@PathVariable("id")Integer id , @RequestBody GitaDTO gitaDTO) {
-        return gitaService.updateGita(id,gitaDTO);
+    public GitaDTO updateGita(@PathVariable("id") Integer id, @RequestBody GitaDTO gitaDTO) {
+        return gitaService.updateGita(id, gitaDTO);
     }
 
     @DeleteMapping("/deleteGita/{id}")

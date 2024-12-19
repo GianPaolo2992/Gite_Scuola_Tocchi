@@ -19,9 +19,10 @@ public class DocenteDTO {
 
     private GitaDTO gitaDTO;
 
-    public DocenteDTO(){}
+    public DocenteDTO() {
+    }
 
-    public Integer getId(){
+    public Integer getId() {
         return id;
     }
 
@@ -57,7 +58,7 @@ public class DocenteDTO {
         return classeDTO;
     }
 
-    public void setClasseDTO(ClasseDTO classeDTO){
+    public void setClasseDTO(ClasseDTO classeDTO) {
         this.classeDTO = classeDTO;
     }
 

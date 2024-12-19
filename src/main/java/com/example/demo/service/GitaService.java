@@ -78,15 +78,19 @@ public class GitaService {
         }
     }
 
+    @Transactional
     public GitaDTO deleteGita(Integer id) {
         Optional<Gita> gitaOpt = gitaRepository.findById(id);
 
-        if(gitaOpt.isPresent()){
+        if (gitaOpt.isPresent()) {
 
             Gita gitaDeleted = gitaOpt.get();
+            Docente docente = gitaDeleted.getDocente();
+            docente.setGita(null);
 
-            if(!gitaDeleted.getListaClassi().isEmpty()){
-                for(Classe classeToDelete : gitaDeleted.getListaClassi()) {
+            if (!gitaDeleted.getListaClassi().isEmpty()) {
+
+                for (Classe classeToDelete : gitaDeleted.getListaClassi()) {
                     classeToDelete.getListaGite().remove(gitaDeleted);
                     classeRepository.save(classeToDelete);
                 }
@@ -95,7 +99,7 @@ public class GitaService {
             gitaRepository.delete(gitaOpt.get());
             return GitaConverter.convertToDTO(gitaDeleted);
 
-        }else {
+        } else {
             throw new EntityNotFoundException("Gita Not Found");
         }
     }

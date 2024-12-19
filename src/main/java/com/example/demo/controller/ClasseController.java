@@ -15,38 +15,47 @@ public class ClasseController {
 
     private final ClasseService classeService;
 
-    public ClasseController(ClasseService classeService){
+    public ClasseController(ClasseService classeService) {
         this.classeService = classeService;
     }
 
     @GetMapping("/getClasseById/{id}")
-    public ClasseDTO getClasseById(@PathVariable("id") Integer id){
+    public ClasseDTO getClasseById(@PathVariable("id") Integer id) {
         return classeService.getClasseById(id);
     }
 
     @GetMapping("/getAllClassi")
-    public List<ClasseDTO> getAllClassi(){
+    public List<ClasseDTO> getAllClassi() {
         return classeService.getAllClassi();
     }
 
     @PostMapping("/InsertClasse")
-    public ClasseDTO insertClasse(@RequestBody ClasseDTO classeDto){
+    public ClasseDTO insertClasse(@RequestBody ClasseDTO classeDto) {
         return classeService.insertClasse(classeDto);
     }
 
     @PutMapping("/updateClasseById/{id}")
-    public ClasseDTO updateClasse(@PathVariable("id") Integer id , @RequestBody ClasseDTO classeDTO){
-        return classeService.updateClasse(id,classeDTO);
+    public ClasseDTO updateClasse(@PathVariable("id") Integer id, @RequestBody ClasseDTO classeDTO) {
+        return classeService.updateClasse(id, classeDTO);
     }
 
     @DeleteMapping("/deleteClasse/{id}")
-    public ClasseDTO deleteClasse(@PathVariable("id") Integer id ){
+    public ClasseDTO deleteClasse(@PathVariable("id") Integer id) {
         return classeService.deleteClasseById(id);
     }
 
+
+    //AssociazioneGita
     @PostMapping("/associateClasseGita/classe{id_classe}/gita{id_gita}")
-    public ClasseDTO associateClasseGita(@PathVariable("id_classe") Integer idClasse,@PathVariable("id_gita") Integer idGita){
-        return classeService.associateClasseGita(idClasse,idGita);
+    public ClasseDTO associateClasseGita(@PathVariable("id_classe") Integer idClasse, @PathVariable("id_gita") Integer idGita) {
+        return classeService.associateClasseGita(idClasse, idGita);
     }
+
+    //DissociazioneGita
+    @DeleteMapping("/deleteAssociationClasseGita/classe{id_classe}/gita{id_gita}")
+    public ClasseDTO deleteAssociationClasseGita(@PathVariable("id_classe") Integer idClasse, @PathVariable("id_gita") Integer idGita) {
+        return classeService.deleteAssocateClasseGita(idClasse, idGita);
+    }
+
 
 }

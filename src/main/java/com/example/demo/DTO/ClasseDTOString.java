@@ -41,7 +41,7 @@ public class ClasseDTOString {
         return listaGiteDTOString;
     }
 
-    public void setListaGiteDTO(List<String> listaGiteDTOString){
-        this.listaGiteDTOString = listaGiteDTO;
+    public void setListaGiteDTOString(List<String> listaGiteDTOString){
+        this.listaGiteDTOString = listaGiteDTOString;
     }
 }

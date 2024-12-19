@@ -25,6 +25,7 @@ public class GitaConverter {
 //        }
         return gita;
     }
+
     public static GitaDTO convertToDTO(Gita gita) {
 
         GitaDTO gitaDTO = new GitaDTO();
@@ -41,27 +42,27 @@ public class GitaConverter {
         }
         return gitaDTO;
     }
+
     public static GitaDTO convertListToDTOXDoc(Gita gita) {
 
-            GitaDTO gitaDTO = new GitaDTO();
-            gitaDTO.setId(gita.getId());
-            gitaDTO.setDestinazione(gita.getDestinazione());
-            gitaDTO.setDataPartenza(gita.getDataPartenza());
-            gitaDTO.setDataRitorno(gita.getDataRitorno());
-            return gitaDTO;
-        }
-
+        GitaDTO gitaDTO = new GitaDTO();
+        gitaDTO.setId(gita.getId());
+        gitaDTO.setDestinazione(gita.getDestinazione());
+        gitaDTO.setDataPartenza(gita.getDataPartenza());
+        gitaDTO.setDataRitorno(gita.getDataRitorno());
+        return gitaDTO;
+    }
 
 
     public static List<GitaDTO> convertListToDTOXClasse(List<Gita> listagite) {
         List<GitaDTO> listagiteDTO = new ArrayList<>();
-        for (Gita gita : listagite){
+        for (Gita gita : listagite) {
             GitaDTO gitaDTO = new GitaDTO();
             gitaDTO.setId(gita.getId());
             gitaDTO.setDestinazione(gita.getDestinazione());
             gitaDTO.setDataPartenza(gita.getDataPartenza());
             gitaDTO.setDataRitorno(gita.getDataRitorno());
-            if(gita.getDocente() != null){
+            if (gita.getDocente() != null) {
                 gitaDTO.setDocenteDTO(DocenteConverter.convertToDTOXClasse(gita.getDocente()));
             }
 

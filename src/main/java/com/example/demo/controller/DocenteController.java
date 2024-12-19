@@ -15,23 +15,23 @@ public class DocenteController {
     private DocenteService docenteService;
 
     @GetMapping("/getDocenteByid/{id}")
-    public DocenteDTO getDocenteByid(@PathVariable("id") Integer id){
+    public DocenteDTO getDocenteByid(@PathVariable("id") Integer id) {
         return docenteService.getDocenteById(id);
     }
 
     @GetMapping("/getAllDocenti")
-    public List<DocenteDTO> getAllDocenti(){
+    public List<DocenteDTO> getAllDocenti() {
         return docenteService.getAllDocenti();
     }
 
     @PostMapping("/insertDocente")
-    public DocenteDTO insertDocente(@RequestBody DocenteDTO docenteDTO){
+    public DocenteDTO insertDocente(@RequestBody DocenteDTO docenteDTO) {
         return docenteService.insertDocente(docenteDTO);
     }
 
     @PutMapping("/updateDocente/{id}")
-    public DocenteDTO updateDocente(@PathVariable("id") Integer id,@RequestBody DocenteDTO docenteDTO ) {
-        return docenteService.updateDocente(id,docenteDTO);
+    public DocenteDTO updateDocente(@PathVariable("id") Integer id, @RequestBody DocenteDTO docenteDTO) {
+        return docenteService.updateDocente(id, docenteDTO);
     }
 
     @DeleteMapping("/deleteDocente/{id}")
